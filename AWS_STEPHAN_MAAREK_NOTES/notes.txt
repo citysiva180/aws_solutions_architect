@@ -1,0 +1,122 @@
+ █████╗ ██╗    ██╗███████╗    ███████╗ ██████╗ ██╗     ██╗   ██╗████████╗██╗ ██████╗ ███╗   ██╗███████╗     █████╗ ██████╗  ██████╗██╗  ██╗██╗████████╗███████╗ ██████╗████████╗
+██╔══██╗██║    ██║██╔════╝    ██╔════╝██╔═══██╗██║     ██║   ██║╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝    ██╔══██╗██╔══██╗██╔════╝██║  ██║██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝
+███████║██║ █╗ ██║███████╗    ███████╗██║   ██║██║     ██║   ██║   ██║   ██║██║   ██║██╔██╗ ██║███████╗    ███████║██████╔╝██║     ███████║██║   ██║   █████╗  ██║        ██║   
+██╔══██║██║███╗██║╚════██║    ╚════██║██║   ██║██║     ██║   ██║   ██║   ██║██║   ██║██║╚██╗██║╚════██║    ██╔══██║██╔══██╗██║     ██╔══██║██║   ██║   ██╔══╝  ██║        ██║   
+██║  ██║╚███╔███╔╝███████║    ███████║╚██████╔╝███████╗╚██████╔╝   ██║   ██║╚██████╔╝██║ ╚████║███████║    ██║  ██║██║  ██║╚██████╗██║  ██║██║   ██║   ███████╗╚██████╗   ██║   
+╚═╝  ╚═╝ ╚══╝╚══╝ ╚══════╝    ╚══════╝ ╚═════╝ ╚══════╝ ╚═════╝    ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝ ╚═════╝   ╚═╝   
+                                                                                                                                                                                
+
+
+=======================================
+Introduction to AWS Solutions Architect  
+=======================================
+
+Week 1 - Cloud Computing Basics
+
+Amazon Elastic Compute Cloud (EC2)
+Amazon Simple Storage Service (S3)
+Amazon Elastic Block Store (EBS)
+Amazon Virtual Private Cloud (VPC)
+Amazon Route 53
+AWS Identity and Access Management (IAM)
+AWS Global Infrastructure
+
+Week 2 - Compute Services
+
+Amazon Elastic Compute Cloud (EC2)
+AWS Lambda
+Amazon Elastic Container Service (ECS)
+Amazon Elastic Kubernetes Service (EKS)
+Amazon EC2 Auto Scaling
+AWS Elastic Beanstalk
+
+Week 3 - Storage Services
+
+Amazon Simple Storage Service (S3)
+Amazon Elastic Block Store (EBS)
+Amazon Elastic File System (EFS)
+AWS Storage Gateway
+Amazon Glacier
+
+Week 4 - Database Services
+
+Amazon Relational Database Service (RDS)
+Amazon DynamoDB
+Amazon ElastiCache
+Amazon Neptune
+Amazon DocumentDB
+Amazon Redshift
+
+Week 5 - Networking Services
+
+Amazon Virtual Private Cloud (VPC)
+AWS Direct Connect
+Amazon Route 53
+AWS Global Accelerator
+AWS PrivateLink
+AWS Transit Gateway
+
+Week 6 - Security and Identity Services
+
+AWS Identity and Access Management (IAM)
+AWS Certificate Manager (ACM)
+AWS Key Management Service (KMS)
+AWS Directory Service
+AWS WAF and AWS Shield
+Amazon GuardDuty
+
+Week 7 - Application Integration Services
+
+Amazon Simple Notification Service (SNS)
+Amazon Simple Queue Service (SQS)
+Amazon Simple Workflow Service (SWF)
+AWS Step Functions
+Amazon EventBridge
+Amazon MQ
+
+Week 8 - Developer Tools and Services
+
+AWS CodePipeline
+AWS CodeBuild
+AWS CodeDeploy
+AWS CodeStar
+AWS Cloud9
+AWS X-Ray
+
+Week 9 - Management and Governance Services
+
+AWS CloudFormation
+Amazon CloudWatch
+AWS CloudTrail
+AWS Config
+AWS Systems Manager
+AWS OpsWorks
+
+Week 10 - Analytics Services
+
+Amazon Kinesis
+Amazon EMR
+Amazon Athena
+Amazon QuickSight
+Amazon Elasticsearch Service
+AWS Glue
+
+Week 11 - Machine Learning Services
+
+Amazon SageMaker
+Amazon Rekognition
+Amazon Comprehend
+Amazon Lex
+Amazon Polly
+Amazon Translate
+
+Week 12 - Miscellaneous Services
+
+Amazon WorkSpaces
+Amazon Connect
+Amazon Chime
+Amazon WorkDocs
+Amazon WorkMail
+AWS IoT
+Remember that this is just a suggested breakdown, and you can adjust the 
+categories and services as per your requirements. Good luck with your exam preparation!

@@ -1,0 +1,224 @@
+ █████╗ ██╗    ██╗███████╗    ███████╗ ██████╗ ██╗     ██╗   ██╗████████╗██╗ ██████╗ ███╗   ██╗███████╗     █████╗ ██████╗  ██████╗██╗  ██╗██╗████████╗███████╗ ██████╗████████╗
+██╔══██╗██║    ██║██╔════╝    ██╔════╝██╔═══██╗██║     ██║   ██║╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝    ██╔══██╗██╔══██╗██╔════╝██║  ██║██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝
+███████║██║ █╗ ██║███████╗    ███████╗██║   ██║██║     ██║   ██║   ██║   ██║██║   ██║██╔██╗ ██║███████╗    ███████║██████╔╝██║     ███████║██║   ██║   █████╗  ██║        ██║   
+██╔══██║██║███╗██║╚════██║    ╚════██║██║   ██║██║     ██║   ██║   ██║   ██║██║   ██║██║╚██╗██║╚════██║    ██╔══██║██╔══██╗██║     ██╔══██║██║   ██║   ██╔══╝  ██║        ██║   
+██║  ██║╚███╔███╔╝███████║    ███████║╚██████╔╝███████╗╚██████╔╝   ██║   ██║╚██████╔╝██║ ╚████║███████║    ██║  ██║██║  ██║╚██████╗██║  ██║██║   ██║   ███████╗╚██████╗   ██║   
+╚═╝  ╚═╝ ╚══╝╚══╝ ╚══════╝    ╚══════╝ ╚═════╝ ╚══════╝ ╚═════╝    ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝ ╚═════╝   ╚═╝   
+                                                                                                                                                                                
+---------------------------
+    EC2 - Elastic Compute
+---------------------------
+
+Its the most popular of aws offering 
+
+- Its known as a elastic service compute cloud 
+- Its an Infrastructure as a Service 
+
+It works as a 
+
+    - rentable virtual machines 
+    - storing data on virtual drivers 
+    - distributing load with load balances 
+    - scaling services using an auto-scaling group 
+
+Knowing EC2 is a fundamental understand to the cloud
+
+EC2 Sizing and Configuration options 
+
+-----------------------------------------------
+Below are the advantage of EC2 Virtual Machines
+-----------------------------------------------
+
+    - Flexibility in choosing operating system 
+    - Flexibility in choosing compute power and cores 
+    - Flexibility in choosing Random Access Memory 
+    - Flexibility in choosing Storage Space which is detachable 
+            - Option to choose network attached (EBS and EFS)
+            - Option to choose Hardware (EC2 instance store)
+    - Option to add network configuration of choice  -  Speed of card, Public IP and Private IP addresses 
+    - Flexibility to choose Firewall settings and security group 
+    - Bootstrap Script - Configure at first launch :  EC2 User Data | You could bootstrap your command scripts to run at the start of your 
+    EC2 instances 
+
+-------------------------------------------------------
+Bootstrapping EC2 Instance | User data in EC2 instance 
+-------------------------------------------------------
+
+- Its possible to bootstrap our instances using an EC2 User data Script 
+- Bootstrapping Means launching commands when the machine starts 
+- This script will only run once at the instance first start. It will not run in restarting and second starting 
+and other consecutive starts 
+- EC2 User data is used to automate boot tasks such as :
+        - installing updates 
+        - installing softwares 
+        - downloading Common files from the internet 
+        - Anything you can think of 
+- EC2 User data script runs with the root user 
+
+--------------------
+Basic EC2 Instances 
+--------------------
+
+instance    vCPU    Mem     Storage     Network Performance     EBS Bandwidth 
+
+t2.micro    1   1   EBS-Only    Low to Moderate     
+t2.xlarge   4   16  EBS-Only    Moderate 
+c5d.4xlarge 16  32  1 x 400 NVMe SSD    Up to 10 Gbps   4750
+r5.16xlarge 64  512 EBS-Only    20GBPs  13,600
+m5.8xlarge  32  128 EBS-Only    10GBps  6800     
+
+
+------------------
+EC2 Instance Types 
+------------------
+
+Amazon Elastic Compute Cloud (EC2) provides a wide range of instance types to choose 
+from, each optimized for different workloads and use cases. Some of the commonly 
+used EC2 instance types are:
+
+General Purpose:
+
+t2.micro, t2.medium, t2.large
+m5.large, m5.xlarge, m5.2xlarge
+
+Compute Optimized:
+
+c5.large, c5.xlarge, c5.2xlarge
+c4.large, c4.xlarge, c4.2xlarge
+
+Memory Optimized:
+
+r5.large, r5.xlarge, r5.2xlarge
+x1e.xlarge, x1e.2xlarge, x1e.4xlarge
+
+Storage Optimized:
+
+i3.large, i3.xlarge, i3.2xlarge
+d2.xlarge, d2.2xlarge, d2.4xlarge
+
+GPU Instances:
+
+p3.2xlarge, p3.8xlarge, p3.16xlarge
+g3.4xlarge, g3.8xlarge, g3.16xlarge
+
+FPGA Instances:
+
+f1.2xlarge, f1.4xlarge, f1.16xlarge
+
+Note that this is not an exhaustive list of all EC2 instance types available on
+AWS, but it covers some of the most commonly used instance types. The choice of 
+instance type depends on the specific workload and requirements of the application 
+being hosted.
+
+FPGA (Field Programmable Gate Array) instances are a type of EC2 instance on Amazon 
+Web Services (AWS) that are designed to allow users to run hardware accelerations for 
+their applications. FPGAs are integrated circuits that can be programmed to perform 
+specific functions or computations, making them ideal for use in applications that 
+require high-performance computing.
+
+
+Conventions : 
+
+m5.2xlarge - 
+
+    m - instance class 
+    5: generation 
+    2xLarge - size within instance class 
+
+
+General Purpose Instances 
+-------------------------
+
+- Great for diversity of workloads such as web servers or code repositories 
+- Balance between 
+    - Compute 
+    - Memory 
+    - Networking 
+
+- In the course, we will be using the t2.micro which is a general purpose Ec2 instance 
+
+Ec2 instances - Compute optimized instances 
+--------------------------------------------
+
+- Great for compute intensive tasks that require high performance processor 
+processors 
+
+- Batch processing workloads 
+- Media Transcoding 
+- High performance web servers 
+- High performance computing 
+- Scientific Modelling and Machine learning 
+- Dedicated Gaming Servers 
+
+starts with C 
+
+Ec2 instances - Memory Optimized Compute Engines  
+------------------------------------------------
+
+Fast performance for workloads that process large data sets in memory 
+Use Cases : 
+
+    - Hight performance, relational/non-relational databases 
+    - Distributed web scale cache stores 
+    - In Memory databases optimized for BI 
+    - Applications performing real-time processing of big unstructured data 
+
+Ec2 instances - Storage Optimized
+---------------------------------
+
+- Great for storage intensive tasks that require high, sequential read and write access 
+for large data sets on local storage 
+
+Use cases; 
+    - High frequency online transactions processing (OLTP) systems 
+    - Relational and NoSQL databases 
+    - Cache for in-memory databases 
+    - Data warehousing applications 
+    - Distributed file systems 
+
+Introduction to Security Groups!
+--------------------------------
+
+Security groups are acting as a "firewall" on EC2 instances 
+
+They regulate: 
+
+    - Access to Ports 
+    - Authorized IP ranges - IPv4 and IPv6
+    - Control of inbound network(from other to the instance)
+    - Control of outbound network (from the instance to other)
+
+Good to Know: 
+
+    - Can be attached to Multiple Instances 
+    - Locked down to a region /VPC combination 
+    - Does live "Outside" the Ec2 - if traffic is blocked the Ec2 instance won't see it. 
+    - Its good to maintain one separate security group for SSH access 
+    - If your application is not accessible(time out), then its a security group issue
+    - By Default all inbound traffic is blocked and outbound traffic is authorized
+
+Classic Ports to Know 
+
+- 22 = SSH(Secure Shell) - Log into a Linux Instance 
+- 21 = FTP(File Transfer Protocol)
+- 22 = SFTP (Secure File Transfer Protocol) - Upload files using SSH 
+- 80 = HTTP - access to unsecured websites
+- 443 = HTTPS - access secured websites 
+
+Using SSH into EC2 Devices from Local Machines for Accessing them. 
+------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

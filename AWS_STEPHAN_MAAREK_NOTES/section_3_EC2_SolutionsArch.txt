@@ -1,0 +1,39 @@
+ █████╗ ██╗    ██╗███████╗    ███████╗ ██████╗ ██╗     ██╗   ██╗████████╗██╗ ██████╗ ███╗   ██╗███████╗     █████╗ ██████╗  ██████╗██╗  ██╗██╗████████╗███████╗ ██████╗████████╗
+██╔══██╗██║    ██║██╔════╝    ██╔════╝██╔═══██╗██║     ██║   ██║╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝    ██╔══██╗██╔══██╗██╔════╝██║  ██║██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝
+███████║██║ █╗ ██║███████╗    ███████╗██║   ██║██║     ██║   ██║   ██║   ██║██║   ██║██╔██╗ ██║███████╗    ███████║██████╔╝██║     ███████║██║   ██║   █████╗  ██║        ██║   
+██╔══██║██║███╗██║╚════██║    ╚════██║██║   ██║██║     ██║   ██║   ██║   ██║██║   ██║██║╚██╗██║╚════██║    ██╔══██║██╔══██╗██║     ██╔══██║██║   ██║   ██╔══╝  ██║        ██║   
+██║  ██║╚███╔███╔╝███████║    ███████║╚██████╔╝███████╗╚██████╔╝   ██║   ██║╚██████╔╝██║ ╚████║███████║    ██║  ██║██║  ██║╚██████╗██║  ██║██║   ██║   ███████╗╚██████╗   ██║   
+╚═╝  ╚═╝ ╚══╝╚══╝ ╚══════╝    ╚══════╝ ╚═════╝ ╚══════╝ ╚═════╝    ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝ ╚═════╝   ╚═╝   
+                  
+
+EC2 at solutions architect level 
+
+---------------------------
+    Public vs Private IP
+---------------------------
+
+- network ids are 2 different options 
+
+    - IPV4 - 3.7 billion ids are already created and devices are talking with each other 
+    - IPV6 - used for IOT 
+
+Private IP vs Public IP 
+
+Computers usually talk with each other with ips. Now when these are public, 
+we could see that they could communicate with their address in the internet 
+
+While in a private network, the ips which are white listed will only communicate 
+with each other. 
+
+Public Ip : 
+
+- Public IP means the machine can be identified on the internet 
+- Must be unique across the whole web 
+- Can be geo located easily 
+
+Private IP 
+
+- Private IP means the machine can only be identified on a private network. 
+- the ips must be unique across \the private network. 
+- But 2 different private networks can have the same ips 
+- Machines connect to WWW using a NAT +  Internet gateway (a proxy)

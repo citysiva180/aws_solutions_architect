@@ -1,0 +1,229 @@
+ █████╗ ██╗    ██╗███████╗    ███████╗ ██████╗ ██╗     ██╗   ██╗████████╗██╗ ██████╗ ███╗   ██╗███████╗     █████╗ ██████╗  ██████╗██╗  ██╗██╗████████╗███████╗ ██████╗████████╗
+██╔══██╗██║    ██║██╔════╝    ██╔════╝██╔═══██╗██║     ██║   ██║╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝    ██╔══██╗██╔══██╗██╔════╝██║  ██║██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝
+███████║██║ █╗ ██║███████╗    ███████╗██║   ██║██║     ██║   ██║   ██║   ██║██║   ██║██╔██╗ ██║███████╗    ███████║██████╔╝██║     ███████║██║   ██║   █████╗  ██║        ██║   
+██╔══██║██║███╗██║╚════██║    ╚════██║██║   ██║██║     ██║   ██║   ██║   ██║██║   ██║██║╚██╗██║╚════██║    ██╔══██║██╔══██╗██║     ██╔══██║██║   ██║   ██╔══╝  ██║        ██║   
+██║  ██║╚███╔███╔╝███████║    ███████║╚██████╔╝███████╗╚██████╔╝   ██║   ██║╚██████╔╝██║ ╚████║███████║    ██║  ██║██║  ██║╚██████╗██║  ██║██║   ██║   ███████╗╚██████╗   ██║   
+╚═╝  ╚═╝ ╚══╝╚══╝ ╚══════╝    ╚══════╝ ╚═════╝ ╚══════╝ ╚═════╝    ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝ ╚═════╝   ╚═╝   
+                                                                                                                                                                                
+
+
+=======================================
+Introduction to AWS Solutions Architect  
+=======================================
+
+---------------------------
+Identity access Management 
+---------------------------
+
+- IAM  - Also known as Identity and access management in aws is a global service 
+- Root account is created by default, it should'nt be shared or used 
+- Users are people within your organization , they can be grouped or not grouped 
+- Groups only contain users and not other groups 
+- Users dont have to belong to a group or necessarily be part of a single group. 
+  They are flexible to join any groups given the permissions 
+
+-------------------------
+Why do we create groups? 
+-------------------------
+
+- Groups help in securely assign permission to access resource 
+- Using groups you could apply permissions on resources so its not used wrongly 
+- The Least Previlege principle is the concept which aws permissions has to follow 
+which gives the least possible permission to handle a resource 
+
+Adding a new USER in IAM 
+- IAM - Add new user  - select IAM User - give a password for your user - 
+    set permissions using administrator or any other policy 
+
+Policies can be attached at 
+
+- Role level 
+- User level 
+- group level 
+
+Best practice is to apply at group level 
+
+---------------------
+IAM Policy in depth :  
+---------------------
+
+Policies could be inline which means could be attached to only 1 person 
+or policies could be group oriented. 
+
+A Single user could be assigned to many groups. On joining these groups 
+the user would inherit the policies and permissions 
+
+IAM policy JSON structure  
+
+{
+    "Version": "2012-10-17",                                                        ---> This would be the version of the policy 
+    "Statement": [                                                                  ---> The statement is a list of object containing the permission details 
+        {
+            "Effect": "Allow",                                                      ---> Effect : will allow will let the user perform his action 
+            "Action": [
+                "s3:GetObject",  
+                "s3:PutObject"
+                     ]                                                              ---> getObject from s3 is the action that is allowed 
+            "Resource": "arn:aws:s3:::my-bucket/*",                                 ---> Resource is the specific s3 Bucket in which the 
+            "Principal": {
+                "AWS": "arn:aws:iam::123456789012:user/my-user"                     ---> account, user, role to which this access is assigned to 
+            }
+        }
+    ]
+}
+
+Remember : 
+
+Policy contains version and statement 
+
+statement contains 
+    - effect, 
+    - action, 
+    - resource,
+    - principle 
+
+----------------------
+IAM Policies Hands on
+---------------------
+
+IAM (Identity and Access Management) is a service provided 
+by AWS that helps you manage access to AWS resources. IAM provides several 
+actions that you can use to manage users, groups, roles, policies, and other 
+IAM-related resources. Here's an overview of some of the most 
+common IAM actions:
+
+CREATE ACTIONS 
+
+iam:CreateUser              - Allows a user to create a new IAM user.
+iam:CreateGroup             - Allows a user to create a new IAM group.
+iam:CreateRole              - Allows a user to create a new IAM role.
+iam:CreatePolicy            - Allows a user to create a new IAM policy.
+
+ATTACH ACTIONS
+
+iam:AttachUserPolicy        - Allows a user to attach a policy to an IAM user.
+iam:AttachGroupPolicy       - Allows a user to attach a policy to an IAM group.
+iam:AttachRolePolicy        - Allows a user to attach a policy to an IAM role.
+
+LIST ACTIONS 
+
+iam:ListUsers               - Allows a user to list all IAM users in the account.
+iam:ListGroups              - Allows a user to list all IAM groups in the account.
+iam:ListRoles               - Allows a user to list all IAM roles in the account.
+iam:ListPolicies            - Allows a user to list all IAM policies in the account.
+
+DELETE ACTIONS 
+
+iam:DeleteUser              - Allows a user to delete an IAM user.
+iam:DeleteGroup             - Allows a user to delete an IAM group.
+iam:DeleteRole              - Allows a user to delete an IAM role.
+iam:DeletePolicy            - Allows a user to delete an IAM policy.
+
+These are just a few of the IAM actions available in AWS. There are many more actions 
+that you can use to manage IAM resources and control access to AWS services. When creating 
+IAM policies, it's important to understand which actions are required for a given task and 
+which actions can be used to grant or deny access to resources.
+
+
+---------------------
+ IAM Password Policy 
+---------------------
+
+You could protect your users by conditioning them to follow a password 
+standard/policy 
+
+- You could allow / deny password changes 
+- You could also expire their password 
+- finally you could turn on the no-repeat password which 
+will disable users to re-use the same password which they had last time. 
+these are some flexible facilities. 
+
+You also could bring out a multi-factor authentication using 
+MFA devices or token devices 
+
+MFA devices could include your mobile devices which you 
+install your authentication app which will change its code 
+every 30 seconds. 
+
+Or you could get a token device which is nothing but has an access token with
+it. With all this you get to add an extra layer of protection to your 
+aws account. 
+
+- virtual MFA devices | These include google authenticator and authy which are virtual apps 
+- 3rd part security key device such as U2F - Universe 2nd Factor 
+- Hardware key Fob MFA device  - token device 
+- Hardware key Fob MFA device  -  AWS GovernmentCloud!
+
+To set your password policy go to account settings in your IAM dashboard side bar 
+you could edit the existing policy. You also could set up your MFA 
+
+
+-----------------------------
+AWS Access Keys, CLI and SDK 
+-----------------------------
+
+What is aws CLI? 
+
+    - A CLI for interacting with AwS services via command line shell
+    - Direct access to the public API of AWS services 
+    - You can develop scripts to manage your resources 
+    - Its open source https://github.com/aws/aws-cli 
+    - Alternative to using AWS Management Console 
+
+Installing the AWS CLI for mac - use the home brew to install  
+brew install awscli 
+
+- By using the aws cli commands you could list-users and run all the common 
+IAM action items through cli. 
+
+ cloud shell is the terminal provided in aws console. Using this console 
+ you get to execute commands right in aws command line 
+ You could also allow access and deny access in aws iam roles. 
+
+-----------------------------
+    AWS ROLES IN IAM 
+-----------------------------
+
+- Some AWS Service will need to perform actions on your behalf 
+- So allow these resources to perform actions you could assign the permission 
+with IAM roles. 
+- Roles in AWS help one resource to access within resources and services 
+with IAM roles 
+
+Some common Example roles include 
+
+    - EC2 roles 
+    - Lambda function roles 
+    - Roles for cloud formation 
+
+---------------------------------------
+    IAM Guidelines and Best Practices 
+---------------------------------------
+
+- Avoid using Root account for creating resources. Use it only for configuration and setup 
+- Always have 1 physical user but have roles that you could assign 
+- Manage users by assigning them to group and then adding the necessary permission to group 
+- Create a strong password policy 
+- Use and enforce the use of MFA 
+- Create and use roles for giving permissions to AWS Services 
+- Use access keys for programmatic access 
+- Audit permissions of your account with IAM credentials report 
+- Never share IAM user keys
+
+-------------------
+IAM Section Summary 
+-------------------
+
+- Users : mapped to physical user, has a password for aws console 
+- Groups : Contains users only 
+- Policies: JSON document that outlines permissions for users or groups 
+- Roles : for EC2 instances and AWS Services 
+- Security : MFA + Password Policy 
+- Access Keys :  access AWS using the CLI and SDK 
+
+---------------------------------------------------------
+Billing alerts and Billing Dashboard Access for IAM users 
+---------------------------------------------------------
+
+- Go to the root account to enable your IAM user to view billing dashboard. 
+
