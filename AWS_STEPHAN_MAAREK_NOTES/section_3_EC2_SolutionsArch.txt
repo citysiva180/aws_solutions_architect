@@ -37,3 +37,47 @@ Private IP
 - the ips must be unique across \the private network. 
 - But 2 different private networks can have the same ips 
 - Machines connect to WWW using a NAT +  Internet gateway (a proxy)
+- Only specified range of ips could be used as an Private IP 
+
+---------------------------
+    Public vs Private IP
+---------------------------
+
+- When you stop an then start an Ec2 Instance it can change its public IP 
+- If you need to have a fixed public IP for your instance, you need an Elastic IP 
+- An Elastic IP is a Public IPv4 IP you own as long as you don't delete it 
+- You can attach it to one instance at a time 
+
+- With an elastic IP address you can mask the failure of an instance or a software by rapidly 
+remapping the address to another instance in your account 
+- you can only have only 5 elastic IP in your account(you can ask AWS to increase that)
+
+- Overall try to avoid using Elastic IPs: 
+
+- They often reflect poor architectural decisions 
+- Instead use a random public IP and register a DNS name to it 
+- Or else could use a Load Balance and don't use the public IP
+
+
+When you stop and start (reboot) an Amazon EC2 instance, its public IP address is not guaranteed to remain the same. 
+By default, the public IP address of an EC2 instance is released when you stop it and is assigned a new public IP 
+address when you start it again. This behavior is because the public IP address is associated with the instance's network 
+interface, which can change when the instance is stopped and started.
+
+This can cause issues if you rely on the instance having a consistent public IP address, especially if you're using 
+that address for public-facing services or if you've whitelisted the IP address for certain purposes.
+
+To maintain a consistent public IP address across instance stop/start cycles, you can use an Elastic IP (EIP). 
+An Elastic IP is a static, public IPv4 address that you can allocate to your AWS account. You can then associate 
+the Elastic IP with an EC2 instance. 
+
+Elastic IPs are specifically used for EC2 instances and provide a consistent public IP address for your instances, 
+which is particularly useful when you need a static IP.
+Dedicated IPs might refer to IP addresses associated with specific AWS-managed services (like network load balancers 
+or NAT gateways), where AWS takes care of IP management.
+In summary, Elastic IPs are used for providing consistent public IP addresses to EC2 instances, whereas the term 
+"dedicated IP" might refer to IP addresses associated with specific AWS-managed services that AWS provisions 
+and manages for you.
+
+
+
