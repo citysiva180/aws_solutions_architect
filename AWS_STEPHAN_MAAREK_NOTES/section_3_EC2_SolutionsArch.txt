@@ -122,7 +122,17 @@ within an availability zones. Scales to 100s of Ec2 instances per group! use cas
 - Usually the use cases are HDFS, HBase, Cassandra and Kafka 
 
 ---------------------------
-     
+ Elastic Network Interface 
 ---------------------------
 
+- Logical component in a VPC that represents a virtual network card!
 
+-  The ENI can have the following attributes 
+    - Primary IPV4 which is private 
+    - One or more secondary IPV4 
+    - One Public IPV4 
+    - A Mac Address and 
+    - A Security group!
+
+- You can create an ENI independently and attach them on the fly on Ec2 instances for Failover
+- Bound to a specific availability zone (AZ)
