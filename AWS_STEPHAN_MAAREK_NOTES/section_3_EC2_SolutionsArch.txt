@@ -136,3 +136,28 @@ within an availability zones. Scales to 100s of Ec2 instances per group! use cas
 
 - You can create an ENI independently and attach them on the fly on Ec2 instances for Failover
 - Bound to a specific availability zone (AZ)
+
+--------------
+EC2 Hibernate!
+--------------
+
+Ec2 Hibernate is an option to preserve the state of RAM in memory. This will help the 
+Ec2 instance to boot up quickly since the Operating System is not terminated / Started! 
+Under the hood: The RAM State is written to a file in the root of EBS volume 
+The Root EBS volume must be encrypted 
+
+Use Cases :  
+
+- Long running Processes 
+- Saving the RAM State 
+- Services that time to initialize 
+
+Ec2 Hibernates does not support all instance families 
+The supported families are 
+    - C3, C4, C5, I3, M3, M4, R3, R4, T2, T3 .. etc 
+The instance RAM size should be less than 150 GB 
+The instance size is not be supported for bare metal instance
+AMI - Amazon Linux 2, Linux AMI, Ubuntu, RHEL, Cent OS and Windows
+Root Volume - Must be EBS, Encrypted, not instance store and larger 
+Its available for On-Demand, Reserved and Spot Instances 
+AN instance can Not be hibernated more than 60 days!
