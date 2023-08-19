@@ -79,5 +79,50 @@ In summary, Elastic IPs are used for providing consistent public IP addresses to
 "dedicated IP" might refer to IP addresses associated with specific AWS-managed services that AWS provisions 
 and manages for you.
 
+---------------------------
+    Placement Groups! 
+---------------------------
+
+Placement groups discusses how the Ec2 instances are placed in the data center. 
+Now the placement could be of three types 
+
+- Cluster placement groups
+- Spread placement group 
+- Partition Placement group 
+
+Cluster partition groups :  They are low latency groups available in a single Availability zone 
+
+- All instances are in the same group and rack 
+- Low latency bandwidth 
+- However there is an increased risk of failure if 1 fails 
+- Use case 
+    - big data jobs 
+    - Application that needs extremely low latency and high network throughput 
+
+
+Spread Placement groups - Instances are spread across the underlying hardware. Max is 7 instances per Availability Zone
+
+- All instances are spread in different hardware. Unlike cluster, all these are distributed in different areas
+- This decreases the changes of failure 
+- It could also span on multiple availability zones 
+- However the limitation is that only 7 instances could be chosen this way
+- Use case : 
+    - high availability
+    - Critical Applications where each instance must be isolated from failure from each other
+
+Partitioned Placement Groups:  Spreads instances across many partitions which rely upon different sets of racks 
+within an availability zones. Scales to 100s of Ec2 instances per group! use case is for Hadoop, casandra and Kafka 
+
+- A Partition will represent a rack in aws availability zone. 
+- It could span across 7 partitions per availability zone 
+- Up to 100 ec2 instances could be spanned per partition 
+- The entire rack is dedicated available for your application. meaning there is no sharing of rack 
+- Incase of any failure the ec2 instances will be affecting for that rack only. Not to other racks! 
+- All the information on the partition could be easily accessed
+- Usually the use cases are HDFS, HBase, Cassandra and Kafka 
+
+---------------------------
+     
+---------------------------
 
 
