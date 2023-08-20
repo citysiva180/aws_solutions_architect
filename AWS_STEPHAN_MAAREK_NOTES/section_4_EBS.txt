@@ -1,0 +1,51 @@
+ █████╗ ██╗    ██╗███████╗    ███████╗ ██████╗ ██╗     ██╗   ██╗████████╗██╗ ██████╗ ███╗   ██╗███████╗     █████╗ ██████╗  ██████╗██╗  ██╗██╗████████╗███████╗ ██████╗████████╗
+██╔══██╗██║    ██║██╔════╝    ██╔════╝██╔═══██╗██║     ██║   ██║╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝    ██╔══██╗██╔══██╗██╔════╝██║  ██║██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝
+███████║██║ █╗ ██║███████╗    ███████╗██║   ██║██║     ██║   ██║   ██║   ██║██║   ██║██╔██╗ ██║███████╗    ███████║██████╔╝██║     ███████║██║   ██║   █████╗  ██║        ██║   
+██╔══██║██║███╗██║╚════██║    ╚════██║██║   ██║██║     ██║   ██║   ██║   ██║██║   ██║██║╚██╗██║╚════██║    ██╔══██║██╔══██╗██║     ██╔══██║██║   ██║   ██╔══╝  ██║        ██║   
+██║  ██║╚███╔███╔╝███████║    ███████║╚██████╔╝███████╗╚██████╔╝   ██║   ██║╚██████╔╝██║ ╚████║███████║    ██║  ██║██║  ██║╚██████╗██║  ██║██║   ██║   ███████╗╚██████╗   ██║   
+╚═╝  ╚═╝ ╚══╝╚══╝ ╚══════╝    ╚══════╝ ╚═════╝ ╚══════╝ ╚═════╝    ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝ ╚═════╝   ╚═╝   
+                  
+
+EBS Volume
+
+---------------------------
+    Elastic Block Store
+---------------------------
+
+- Its an network drive which you could attach to your instances while they run. 
+- It allows your instances to persist data event after their termination. 
+- The can only be mounted to one instance at a time at ccp level 
+- They are bound to a specific availability zone. 
+- Analogy - Think of them as a "Network USB Stick"
+- Free tier: 30 GB of free EBS Storage of type General Purpose or Magnetic Per Month
+
+So basically its a network drive. Not Physical Drive 
+    - Uses network to communicate the instance, which means there might be a bit of latency 
+    - It can be detached from an Ec2 instance and attached to another one quickly 
+
+Its locked to an Availability Zone 
+    - An EBS Volume in us-east-1a cannot be attached to us-east-1b 
+    - To move a volume across, you need to snapshot it 
+
+You should provision its capacity in advanced. You should specify its 
+memory storage capacity and the read in put and output properly
+
+A single EBS Drive could not have 2 Ec2 instances. 
+But a single parent operating instance can have 2 network EBS Drives 
+
+Note, its important that the EBS is fixed to a single Available zone. 
+You cannot move them to different Ec2 Instances in different availability zone. 
+
+Deleting EBS volumes: 
+
+You need kee your attributes in check when you are deleting your EBS volume. 
+On selecting Delete on Termination, the EBS root volume would be deleted. 
+If not selected, you could delete your instance and re-attach to a different instance and start 
+using your EBS volume
+
+This can be controlled by the AWS Console / AWS CLI 
+
+The use case for the delete on termination option is to preserve the data or storage memory, 
+even if the Ec2 instance is deleted.
+
+
