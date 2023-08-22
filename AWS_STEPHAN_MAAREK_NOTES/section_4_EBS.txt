@@ -112,6 +112,7 @@ Hands on Activities :
 -------------------------
 
 EBS Volumes come in 6 types
+--------------------------
 - gp2 / pg3 - SSD volumes : 
     - They are general purpose SSDs volumes that balances price and performance for a wide variety of 
     workloads 
@@ -124,6 +125,7 @@ EBS Volumes come in 6 types
 - Only gp2/gp3 and io1/io2 can be used as boot volumes
 
 General Purpose SSD 
+--------------------
     - Cost Effective Storage, low-latency 
     - System boot volumes, Virtual Desktop, Development and test environments 
     - Volume starts from 1GB to 16 TB 
@@ -138,6 +140,42 @@ General Purpose SSD
         - 3 IOPs per GB, means at 5,334 GB we are the max IOPs
 
 EBS Volume Types Use Cases 
+--------------------------
+
 Provisioned IOPS (PIOPS) SSD 
+
 - Critical Business application with Sustained IOPS performance 
 - Or Applications that need more than 16,000 IOPS 
+- Great for Database work loads (sensitive to storage perf and consistency)
+- io1/io2 (4GB - 16TiB)
+    - Max PIOPS : 64000 for Nitro Ec2 instances and 32,000 
+    - Can increase PIOPS independently from storage size 
+    - io2 have more durability and more IOPS per GIB at the same price as io1 
+- io2 Block Express (4GiB - 64TiB):
+    - Sub-millisecond latency 
+    - Max PIOPS:256000 with an IOPS:GiB ratio of 1,000:I
+- Supports EBS Multi-attach
+
+Hard Disk Drives 
+
+- Cannot be a boot volume 
+- 125GB to 16TiB 
+- Throughput optimized 
+    - Big Data, Data Warehouses, Log Processing 
+    - Max throughput 500 MiB/s - max IOPS 500
+- Cold HDD (scl):
+    - For data that is infrequently accessed 
+    - Scenarios where lowest cost is important 
+    - Max throughput 250 MiB/s - max IOPS 250
+
+-----------------------------
+   EBS Multi Attach Family 
+-----------------------------
+
+- Attach the same EBS volume to multiple Ec2 instance in the same AZ 
+- Each instance has a full read and write permissions to the high-performance volume 
+- Use case : 
+    - Achieve higher application availability in clustered Linux Applications (ex: Tera data)
+    - Application must manage concurrent write operations
+- Up to 16 EC2 instance at a time 
+- Must use a file system that's cluster-aware (not XFS, EXT4,etc...)
