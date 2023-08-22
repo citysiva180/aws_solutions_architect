@@ -1,0 +1,33 @@
+ █████╗ ██╗    ██╗███████╗    ███████╗ ██████╗ ██╗     ██╗   ██╗████████╗██╗ ██████╗ ███╗   ██╗███████╗     █████╗ ██████╗  ██████╗██╗  ██╗██╗████████╗███████╗ ██████╗████████╗
+██╔══██╗██║    ██║██╔════╝    ██╔════╝██╔═══██╗██║     ██║   ██║╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝    ██╔══██╗██╔══██╗██╔════╝██║  ██║██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝
+███████║██║ █╗ ██║███████╗    ███████╗██║   ██║██║     ██║   ██║   ██║   ██║██║   ██║██╔██╗ ██║███████╗    ███████║██████╔╝██║     ███████║██║   ██║   █████╗  ██║        ██║   
+██╔══██║██║███╗██║╚════██║    ╚════██║██║   ██║██║     ██║   ██║   ██║   ██║██║   ██║██║╚██╗██║╚════██║    ██╔══██║██╔══██╗██║     ██╔══██║██║   ██║   ██╔══╝  ██║        ██║   
+██║  ██║╚███╔███╔╝███████║    ███████║╚██████╔╝███████╗╚██████╔╝   ██║   ██║╚██████╔╝██║ ╚████║███████║    ██║  ██║██║  ██║╚██████╗██║  ██║██║   ██║   ███████╗╚██████╗   ██║   
+╚═╝  ╚═╝ ╚══╝╚══╝ ╚══════╝    ╚══════╝ ╚═════╝ ╚══════╝ ╚═════╝    ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝ ╚═════╝   ╚═╝   
+                  
+
+
+------------------------------------------
+       Amazon EFS - Elastic File System 
+------------------------------------------
+
+- Managed NFS (network file system) that can be mounted on many EC2
+- EFS works with EC2 instances in Multi-Availability Zone 
+- High Availability, scalable, expensive (3x gp2), pay per use
+
+use cases : 
+
+    - content management, web serving, Word press 
+    - NFSv4.1 protocol - only works with linux and uses Network File System 4.1
+    - Uses Security group to control access to EFS  
+    - Compatible with Linux based AMI (not windows)
+    - Encryption at rest using KMS 
+
+    - POSIX file system (~Linux) that has standard file API 
+    - File system scales automatically, pay-per-use, no capacity planning! 
+
+Performance and Storage Clases 
+
+EFS Scale 
+    - 1000s of concurrent NDS clients, 10GB+/s throughput 
+    - Grow to petabyte-scale network file system, automatically 
