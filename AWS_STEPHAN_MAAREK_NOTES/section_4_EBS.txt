@@ -72,6 +72,7 @@ EBS Snapshot features
     - EBS Fast Snapshot restore 
         - Force full initialization of snapshot to have no latency on first use
 
+
 ------------------------------------
     AWS AMI - Amazon Machine Image 
 ------------------------------------
