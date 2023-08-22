@@ -49,3 +49,94 @@ The use case for the delete on termination option is to preserve the data or sto
 even if the Ec2 instance is deleted.
 
 
+---------------------------
+    EBS Snapshots
+---------------------------
+
+Make a backup snapshot of your EBS volume at a point in time 
+Not necessary to detach your EBS volume to do a snapshot, but its recommended to do it that way
+Can Copy snapshots across AZ or region!
+
+In order to transfer a EBS volume to one region to another, you take a snapshot using EBS 
+Snapshot and then transfer it. Basically the snapshot 
+
+EBS Snapshot features 
+    - EBS Snapshot Archive 
+        - Move a snapshot to an "archive tier" that is 75% cheaper 
+        - Takes within 24 to 72 hours for restoring the archieve 
+
+    - EBS Recycle BIN 
+        - Setup rules to retain deleted snapshots so you can recover 
+        them after an accidental deletion 
+        - Specify retention (from 1 day to 1 year)
+    - EBS Fast Snapshot restore 
+        - Force full initialization of snapshot to have no latency on first use
+
+------------------------------------
+    AWS AMI - Amazon Machine Image 
+------------------------------------
+
+- AMI also known as Amazon Machine Image is a Linux version operating system for Ec2 Instances 
+- They are customization of an EC2 instance
+    - You could add your own software, configuration, operating system and monitoring 
+    - Faster boot / configuration time because all your software is pre-packed 
+
+- AMI are built for specific region and could be copied across regions 
+- You can launch Ec2 instances from :
+    - A Public AMI : AWS Provided 
+    - Your own AMI : You make and maintain them yourself 
+    - An AWS Marketplace AMI : An AMI someone else made(and potentially sells)
+
+Hands on Activities : 
+
+    - Starting an Ec2 instance and customizing it 
+    - Stoping the instance 
+    - Building an AMI with snapshots 
+    - Launching an instance from other AMIs
+
+-------------------------
+   Ec2 Instance Store
+-------------------------
+
+- EBS volumes are network drives with good but "limited" performance 
+- If you need a high-Performance hardware disk, use Ec2 Instance Store 
+- Better I/O performance 
+- Ec2 Instance store lose their storage if they're stopped (ephemeral)
+- good for buffer/cache/scratch data/ temporary content
+- Risk of data loss, if hardware fails
+- Backups and Replication are your responsibility. 
+
+-------------------------
+   EBS Volume Types 
+-------------------------
+
+EBS Volumes come in 6 types
+- gp2 / pg3 - SSD volumes : 
+    - They are general purpose SSDs volumes that balances price and performance for a wide variety of 
+    workloads 
+- io1 / io2 - SSD : Highest Performance SSD volume for critical mission low latency or high throughput workloads 
+- st1 (HDD) -  Lowcost HDD volume designed for frequently accessed throughput intensive workloads 
+- sc1 (HDD) - Lowcost HDD volume designed for less frequently accessed workloads 
+
+- EBS volumes are characterized in Size | Throughput | IOPS (Input / Output per second)
+- When in doubt always consult the AWS Documentation
+- Only gp2/gp3 and io1/io2 can be used as boot volumes
+
+General Purpose SSD 
+    - Cost Effective Storage, low-latency 
+    - System boot volumes, Virtual Desktop, Development and test environments 
+    - Volume starts from 1GB to 16 TB 
+    
+    GP3 : 
+        - Base line of 3000 input output reads per second with an through put of 125 Mb/s 
+        - Can increase IOPs up to 16,000 and throughput up to 1000 Mb/s independently 
+
+    GP2: 
+        - Small gp2 volumes can burst IOPS to 3000
+        - Size of the volume and IOPS are linked, max IOPS is 16000
+        - 3 IOPs per GB, means at 5,334 GB we are the max IOPs
+
+EBS Volume Types Use Cases 
+Provisioned IOPS (PIOPS) SSD 
+- Critical Business application with Sustained IOPS performance 
+- Or Applications that need more than 16,000 IOPS 
