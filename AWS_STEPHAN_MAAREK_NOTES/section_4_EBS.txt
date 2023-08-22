@@ -179,3 +179,24 @@ Hard Disk Drives
     - Application must manage concurrent write operations
 - Up to 16 EC2 instance at a time 
 - Must use a file system that's cluster-aware (not XFS, EXT4,etc...)
+
+-----------------------------
+       EBS Encryption
+-----------------------------
+
+- When you create an encrypted EBS volume, you get the following 
+
+    - Data at rest us encrypted instance the volume 
+    - All the data in flight moving between the instance and the volume is encrypted 
+    - All snapshots are encrypted 
+    - All volumes created from the snapshot 
+
+- Encryption and decryption are handled transparently
+- Encryption has minimal impact on latency 
+- EBS Encryption leverages keys from KMS(AES - 256)
+
+How should the encryption done?
+- Create an EBS Snapshot of the volume 
+- Encrypt the EBS snapshot (using copy)
+- Create new EBS volume from the snapshot (the volume will also be encrypted)
+- Now you can attach the encrypted volume to the original instance 
