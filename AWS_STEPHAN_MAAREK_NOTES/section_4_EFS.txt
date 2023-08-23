@@ -26,8 +26,33 @@ use cases :
     - POSIX file system (~Linux) that has standard file API 
     - File system scales automatically, pay-per-use, no capacity planning! 
 
-Performance and Storage Clases 
+Performance and Storage Classes 
 
 EFS Scale 
-    - 1000s of concurrent NDS clients, 10GB+/s throughput 
+    - 1000s of concurrent NFS clients, 10GB+/s throughput 
     - Grow to petabyte-scale network file system, automatically 
+
+- Performance Mode 
+    - General Purpose - Latency-Sensitive use cases (web server, CMS, etc)
+    - Max I/O - higher latency, throughput, highly parallel - big data, media processing 
+
+- Throughput mode 
+    - Bursting  - 1TB = 50 MiB/s + Burst of up to 100MiB/s 
+    - Provisioned - Set your throughput regardless of storage size, ex:1GiB for 1TB storage 
+    - Elastic - automatically scales up and down based on workloads
+
+EFS - Storage Classes 
+
+- Storage Tiers (lifecycle Management feature) 
+
+    - Standard : for frequently accessed files 
+    - Infrequent access (EFS-IA): cost to retrieve files
+    lower price to store. Enable EFS-IA with a lifecycle Policy
+
+- Availability and Durability 
+
+    - Standard : Multi-AZ, great for prod 
+    - One Zone : One AZ, great for dev, backup enabled by default, 
+    compatible with IA (EFS One Zone-IA)
+
+- Over 90% in cost savings 
