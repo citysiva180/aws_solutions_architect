@@ -1,0 +1,109 @@
+ █████╗ ██╗    ██╗███████╗    ███████╗ ██████╗ ██╗     ██╗   ██╗████████╗██╗ ██████╗ ███╗   ██╗███████╗     █████╗ ██████╗  ██████╗██╗  ██╗██╗████████╗███████╗ ██████╗████████╗
+██╔══██╗██║    ██║██╔════╝    ██╔════╝██╔═══██╗██║     ██║   ██║╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝    ██╔══██╗██╔══██╗██╔════╝██║  ██║██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝
+███████║██║ █╗ ██║███████╗    ███████╗██║   ██║██║     ██║   ██║   ██║   ██║██║   ██║██╔██╗ ██║███████╗    ███████║██████╔╝██║     ███████║██║   ██║   █████╗  ██║        ██║   
+██╔══██║██║███╗██║╚════██║    ╚════██║██║   ██║██║     ██║   ██║   ██║   ██║██║   ██║██║╚██╗██║╚════██║    ██╔══██║██╔══██╗██║     ██╔══██║██║   ██║   ██╔══╝  ██║        ██║   
+██║  ██║╚███╔███╔╝███████║    ███████║╚██████╔╝███████╗╚██████╔╝   ██║   ██║╚██████╔╝██║ ╚████║███████║    ██║  ██║██║  ██║╚██████╗██║  ██║██║   ██║   ███████╗╚██████╗   ██║   
+╚═╝  ╚═╝ ╚══╝╚══╝ ╚══════╝    ╚══════╝ ╚═════╝ ╚══════╝ ╚═════╝    ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝ ╚═════╝   ╚═╝   
+                  
+
+------------------------------------------
+   Amazon ELB - Elastic LOAD Balancer
+------------------------------------------
+
+scalability and availability 
+
+Scalability is of 2 types 
+
+    - Vertical 
+    - Horizontal 
+
+Vertical Scalability:
+
+- Vertically scalability means increasing the size of the instance 
+- For example, your application runs on a t2.micro 
+- Scaling that application large means running it on a t2.large instance 
+- Vertical scalability is very common for non distributed systems, such as a database 
+- RDS,Elastic cache are services that can scale vertically. 
+- There's usually a limit to how much you can vertically scale. 
+
+Horizontal Scalability: 
+
+- Horizontal scalability means increasing the number of instances / systems for 
+your application 
+- Horizontal scaling implies distributed systems. 
+- This is very common for web applications / modern applications 
+- Its easy to horizontally scale thanks to cloud offerings such as ec2. 
+
+High availability: 
+
+- High Availability usually goes hand in hand with horizontal scaling 
+- High availability means running your application / system in at least 2 data centres (== Availability Zones)
+- The goal of high availability is to survive a data center loss 
+- The high availability can be passive for RDS Multi-AZ for example | Active in case both are working and passive in which 1 will work if one goes offline 
+
+Summary 
+
+    - Vertical scaling - from t2.nano to i2tb.metal
+    - horizontal scaling - Increasing number of scaling group, adding load balancer 
+    - High Availability - Auto scaling Group Multi-AZ, Load Balancer Multi-AZ 
+
+---------------------------------------------
+   What is Amazon's Elastic Load Balancer? 
+---------------------------------------------
+
+Load Balancers are servers that forward traffic to multiple servers (Eg. Ec2 instances) downstream
+
+Why to use a Load Balancer: 
+
+- Spread load across multiple downstream instances 
+- Expose a single point of access to your Application 
+- Seamlessly handle failures of downstream instances 
+- Do regular health checks to your instances 
+- Provide SSL termination (HTTPS) for your websites 
+- Enforce stickiness with cookies 
+- High Availability across Zones 
+- Separate public traffic from private traffic 
+
+An elastic load balancer is a Managed Load Balancer 
+    - AWS guarantees that it will be working 
+    - AWS takes care of upgrades, maintenance and high availability 
+    - AWS provides only a few configuration knobs 
+
+It costs less to setup your own load balancer but it will be a lot more effort on 
+your end 
+
+It is integrated with many AWS offerings / services 
+
+- Ec2, Ec2 Auto Scaling Groups, Amazon ECS 
+- AWS Certificate Manager (ACM), Cloud Watch 
+- Route 53, AWS, WAF, AWS Global Accelerator
+
+Health Checks 
+
+- Verify if EC2 Works properly.
+- They enable the load balancers to know if instances are available incase of higher traffics. They also enable it 
+to check on replies of ec2 instances for network requests on the same. 
+- The health check of the instance availability is done on a port and on a route. 
+- If the response is not 200, then the traffic will not be forwarded to that instance. 
+
+Types of Load balancers 
+- AWS has 4 kinds of Managed Load Balancers 
+- Classic Load Balancer (v1 - old generation) - 2009 - CLB 
+    - HTTP, HTTPS, TCP, SSL 
+- Application Load Balancer 
+    - HTTPS, HTTP, WebSocket 
+- Network load Balancer 
+    - TCP, TLS (Secure TCP), UDP 
+- Gateway Load Balancer 
+    - Operates at layer 3(Network layer) - IP Protocol 
+
+- Overall, It is recommended to use the newer generation load balancers as they provide more features 
+- Some load balancers can be setup as internal (private) or external (public) ELB
+
+Load Balancer Security Groups 
+
+
+- Users at client side could connect to the application load balancer via HTTP, HTTPS traffic 
+- However from load balancer the connection will be private and secure and the inbound traffic will only be from Load Balancer IP 
+- The Load Balancer Security group will usually have a port range from 80 to 443 and has source of 0.0.0.0/0
+
