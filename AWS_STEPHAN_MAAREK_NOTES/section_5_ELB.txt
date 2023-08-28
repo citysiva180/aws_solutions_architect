@@ -116,3 +116,19 @@ Load Balancer Security Groups
 - Load Balancing to multiple applications on the same machine - ex-containers 
 - Support for HTTP/2 and websocket 
 - Support redirects - from HTTP to HTTPS for example 
+
+- Routing Tables 
+    - Routing is based on path in URL 
+    - Routing is based on hostname in URL 
+    - Routing is based on Query Strings, Headers 
+
+- ALB are a great fit fir micro services and container-based application
+- Has a port mapping feature to redirect to dynamic post in ECS 
+- In Comparison we need multiple classic load balancer per application
+
+Where are the target groups... 
+
+- EC2 instances - Managed by an Autoscaling group  - HTTP 
+- ECS Tasks managed by ECS itself  - HTTP 
+- Lambda functions - HTTPS requests is translated into a JSON event 
+- IP Addresses
