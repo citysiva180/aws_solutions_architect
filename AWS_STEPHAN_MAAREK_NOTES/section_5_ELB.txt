@@ -107,3 +107,12 @@ Load Balancer Security Groups
 - However from load balancer the connection will be private and secure and the inbound traffic will only be from Load Balancer IP 
 - The Load Balancer Security group will usually have a port range from 80 to 443 and has source of 0.0.0.0/0
 
+---------------------------------------------
+   What is Application Load Balancer? 
+---------------------------------------------
+
+- Application Load Balancer is Layer 7 
+- Load balancing to multiple HTTP applications across machines - (Target groups)
+- Load Balancing to multiple applications on the same machine - ex-containers 
+- Support for HTTP/2 and websocket 
+- Support redirects - from HTTP to HTTPS for example 
