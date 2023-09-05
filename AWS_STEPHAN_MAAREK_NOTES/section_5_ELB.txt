@@ -132,3 +132,44 @@ Where are the target groups...
 - ECS Tasks managed by ECS itself  - HTTP 
 - Lambda functions - HTTPS requests is translated into a JSON event 
 - IP Addresses
+
+---------------------------------------------
+        Network Load Balancer 
+---------------------------------------------
+
+- It forwards TCP and UDP traffic to your instances 
+- It could handle millions of requests per seconds 
+- Less latency ~100 ms compared to application load balancer. 
+
+Network load balancer has only one static IP per availability zone and 
+it supports assigning Elastic IP - helpful for whitelisting specific IP 
+
+Network Load Balancers are used for Extreme performance, TCP or UDP traffic 
+Its not included in AWS free tier
+
+
+- Ec2 Instances 
+- IP Addresses - must be Private IPs 
+- Application Load Balancer 
+- Health Check Support the TCP, HTTP and HTTPS Protocols
+
+---------------------------------------------
+        Gateway Load Balancer 
+---------------------------------------------
+
+Deploy, Scale and Manage a fleet of 3rd Party network virtual appliances 
+in AWS 
+
+Gateway traffic acts as a gateway watch men on your traffic and 3rd part application requests 
+It checks if the request is legit by sending it to a gateway analyser. If the traffic is not 
+healthy, then is dropped. Else the traffic is routed to application Ec2 instance all the way to the end. 
+
+Gateway load balancer operates on layer 3 which is the network layer - IP 
+
+It combines the following functions 
+    - Transparent Network Gateway - Single entry / Exit for all the traffic 
+    - Load Balancer - Distributes your traffic to your virtual appliances 
+
+Uses the GENEVE Protocol for port 6081
+
+For a Gateway Load Balancer the target group should be Ec2 Instance 
