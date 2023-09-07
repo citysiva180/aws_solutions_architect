@@ -219,3 +219,36 @@ With Cross Zone Load Balancing
     - Requests are distributed in the instances of the node of the elastic load balancer 
 
 
+Application Load Balancer 
+
+- Enabled by Default (can be disabled at the target group level)
+- No Charges for inter AZ data 
+
+Network Load Balancer and Gateway Load Balancer 
+
+- Disabled by Default 
+- You pay charges for inter AZ data if enabled 
+
+Classic Load Balancer
+
+- Disabled by Default 
+- No charges for inter AZ data if enabled
+
+---------------------------------------------
+              SSL Certificates
+----------------------------------------------
+
+- An SSL Certificate allows traffic between your clients and your load balancer 
+to be encrypted in transit (in-flight encryption)
+
+- SSL refers to secure sockets layer used to encrypt connections 
+- TLS refers to Transport Layer Security, which is a newer version 
+- Nowadays, TLS certificates are mainly used, but people stiff refer as SSL 
+
+- Public SSL certificates are issued by Certificate Authorities 
+- Comodo, Symatec, Go Daddy and GlobalSign and Digicert , Letsencrypt etc 
+
+- SSL Certificates have an expiration date and must be renewed.
+
+
+
