@@ -251,4 +251,39 @@ to be encrypted in transit (in-flight encryption)
 - SSL Certificates have an expiration date and must be renewed.
 
 
+During Load Balancing 
+- It loads the X.509 certificate (SSL/TLS server certificate)
+- You can Manage certificates using ACM (AWS Certificate Manager)
+- You can create / upload your own certificates alternatively
+- HTTPS Listener: 
+    - You must specify a default certificate 
+    - You can add an optional list of certs to support multiple domains 
+    - clients can use SNI to specify the host name they reach 
+    - Ability to specify policy to support older versions of SSL / TLS legacy clients
 
+SNI - Server Name Indication 
+
+- SNI Solves the problem of loading multiple SSL certificates on to one web server 
+- Its a newer protocol and requires the client to indicate the host name of the target server
+in the initial SSL handshake
+
+- Only works for ALB and NLB and CloudFront
+- Does not works for CLB 
+
+ELB with SSL 
+
+- Classic Load Balancer 
+    - only 1 certificate 
+- ALB could support multiple certificates and uses SNI 
+- NLB supports multiple listeners with multiple SSL certificates
+
+---------------------------------------------
+             Connection Draining
+----------------------------------------------
+
+Feature Naming 
+    - Connection Draining  - for CLB 
+    - De-registration Delay - for ALB and NLB 
+
+- Time to complete "in-flight requests" while the instance is de-registering or unhealthy 
+- Stops sending new requests to the ec2 instance which is de-registering
