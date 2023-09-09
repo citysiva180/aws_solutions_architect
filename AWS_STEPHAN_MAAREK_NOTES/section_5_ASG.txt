@@ -1,0 +1,26 @@
+ █████╗ ██╗    ██╗███████╗    ███████╗ ██████╗ ██╗     ██╗   ██╗████████╗██╗ ██████╗ ███╗   ██╗███████╗     █████╗ ██████╗  ██████╗██╗  ██╗██╗████████╗███████╗ ██████╗████████╗
+██╔══██╗██║    ██║██╔════╝    ██╔════╝██╔═══██╗██║     ██║   ██║╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝    ██╔══██╗██╔══██╗██╔════╝██║  ██║██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝
+███████║██║ █╗ ██║███████╗    ███████╗██║   ██║██║     ██║   ██║   ██║   ██║██║   ██║██╔██╗ ██║███████╗    ███████║██████╔╝██║     ███████║██║   ██║   █████╗  ██║        ██║   
+██╔══██║██║███╗██║╚════██║    ╚════██║██║   ██║██║     ██║   ██║   ██║   ██║██║   ██║██║╚██╗██║╚════██║    ██╔══██║██╔══██╗██║     ██╔══██║██║   ██║   ██╔══╝  ██║        ██║   
+██║  ██║╚███╔███╔╝███████║    ███████║╚██████╔╝███████╗╚██████╔╝   ██║   ██║╚██████╔╝██║ ╚████║███████║    ██║  ██║██║  ██║╚██████╗██║  ██║██║   ██║   ███████╗╚██████╗   ██║   
+╚═╝  ╚═╝ ╚══╝╚══╝ ╚══════╝    ╚══════╝ ╚═════╝ ╚══════╝ ╚═════╝    ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝ ╚═════╝   ╚═╝   
+                  
+
+
+
+
+---------------------------------------------
+            Auto Scaling Groups
+----------------------------------------------
+
+In real life the load on your websites could change rapidly. 
+Hence you need to start and stop instances very quickly to keep up with the speed 
+
+To Automate the scaling of instances you could use the Auto Scaling group 
+- Scale out - add Ec2 instances to match and increased load 
+- Scale in  - remove ec2 instances to match the decreased load 
+- Ensure we have a minimum and maximum number of ec2 instances running 
+- Automatically register new instances to a load balancer 
+- If the instance is unhealthy a new instance is created 
+
+ASG is free of cost
