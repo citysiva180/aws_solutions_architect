@@ -282,8 +282,15 @@ ELB with SSL
 ----------------------------------------------
 
 Feature Naming 
+
+Delaying connection to process all requests so there is a completion of requests
+
     - Connection Draining  - for CLB 
     - De-registration Delay - for ALB and NLB 
 
 - Time to complete "in-flight requests" while the instance is de-registering or unhealthy 
 - Stops sending new requests to the ec2 instance which is de-registering
+- You could delay the requests from 1 to 3600 seconds, where default is 300 seconds. 
+- Setting it to low value, if your requests are short 
+- It could be disabled say 0 
+
