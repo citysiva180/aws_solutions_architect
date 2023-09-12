@@ -24,3 +24,51 @@ To Automate the scaling of instances you could use the Auto Scaling group
 - If the instance is unhealthy a new instance is created 
 
 ASG is free of cost
+
+A lauch template 
+    - AMI
+    - instance type 
+    - user data ebs volumes 
+    - security group 
+    - ssh key pair 
+    - IAM Roles for your Ec2 instances
+    - Network + Subnet Information
+    - Load Balancer Information 
+    - Min Size and Max Size scaling policies 
+
+Auto Scaling 
+    - Its possible to scale based on cloud watch alarm 
+    - An Alarm monitors a metric such as Average CPU or a custom Metric 
+    - Metrics such as Average CPU are computed for the overall ASG instances 
+    - Based on Alarm 
+        - We can create scale out policies and increase the number of instances
+
+ASG Scaling Policies 
+
+- Target Tracking Scaling 
+    - Most simple and easy to setup 
+    - Example: I want the avarage ASG CPU to stay around 40%
+- Simple / Step Scaling 
+    - When a Cloud Watch alarm is triggered  - example cpu > 70% then add 2 units
+    - When a cloud watch alarm is triggered - example cpu > 30%, then remove 
+
+Scheduled Actions 
+
+- Anticipate a scaling based on known usage patterns 
+- Example : increase the min capacity to 10 to 5pm on Fridays
+
+Good Metrics to Scale on 
+
+- CPU Utilization : Average CPU utilization across your instances 
+- RequestCountPerTarget : to make sure the number of requests per Ec2 is stable
+- Average Network in / out - if your application is network bound 
+- Any custom metric - that you push in cloud watch!
+
+Auto Scaling Group - cool downs 
+
+- After a scaling activity happens, you are in the cool down period 
+default is 300 seconds 
+- During the cool down period, the ASG will not launch or terminate additional instances to allow 
+for metrics to stabilize 
+- Advice : Use a ready to use AMI to reduce configuration time in order to be serving requests fasters
+and reduce the cool down period 
