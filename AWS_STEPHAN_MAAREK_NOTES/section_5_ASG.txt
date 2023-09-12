@@ -25,7 +25,7 @@ To Automate the scaling of instances you could use the Auto Scaling group
 
 ASG is free of cost
 
-A lauch template 
+A launch template 
     - AMI
     - instance type 
     - user data ebs volumes 
@@ -47,7 +47,7 @@ ASG Scaling Policies
 
 - Target Tracking Scaling 
     - Most simple and easy to setup 
-    - Example: I want the avarage ASG CPU to stay around 40%
+    - Example: I want the average ASG CPU to stay around 40%
 - Simple / Step Scaling 
     - When a Cloud Watch alarm is triggered  - example cpu > 70% then add 2 units
     - When a cloud watch alarm is triggered - example cpu > 30%, then remove 
