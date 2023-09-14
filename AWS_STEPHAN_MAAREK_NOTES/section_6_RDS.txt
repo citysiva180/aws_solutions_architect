@@ -1,0 +1,49 @@
+ █████╗ ██╗    ██╗███████╗    ███████╗ ██████╗ ██╗     ██╗   ██╗████████╗██╗ ██████╗ ███╗   ██╗███████╗     █████╗ ██████╗  ██████╗██╗  ██╗██╗████████╗███████╗ ██████╗████████╗
+██╔══██╗██║    ██║██╔════╝    ██╔════╝██╔═══██╗██║     ██║   ██║╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝    ██╔══██╗██╔══██╗██╔════╝██║  ██║██║╚══██╔══╝██╔════╝██╔════╝╚══██╔══╝
+███████║██║ █╗ ██║███████╗    ███████╗██║   ██║██║     ██║   ██║   ██║   ██║██║   ██║██╔██╗ ██║███████╗    ███████║██████╔╝██║     ███████║██║   ██║   █████╗  ██║        ██║   
+██╔══██║██║███╗██║╚════██║    ╚════██║██║   ██║██║     ██║   ██║   ██║   ██║██║   ██║██║╚██╗██║╚════██║    ██╔══██║██╔══██╗██║     ██╔══██║██║   ██║   ██╔══╝  ██║        ██║   
+██║  ██║╚███╔███╔╝███████║    ███████║╚██████╔╝███████╗╚██████╔╝   ██║   ██║╚██████╔╝██║ ╚████║███████║    ██║  ██║██║  ██║╚██████╗██║  ██║██║   ██║   ███████╗╚██████╗   ██║   
+╚═╝  ╚═╝ ╚══╝╚══╝ ╚══════╝    ╚══════╝ ╚═════╝ ╚══════╝ ╚═════╝    ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝   ╚══════╝ ╚═════╝   ╚═╝   
+                  
+------------------------------------------
+   Amazon RDS - Relational Database 
+------------------------------------------
+
+- RDS Stands for Relational Database Service 
+- It's managed DB service for DB use SQL as a Query Language 
+- It allows you to create databases in the cloud that are managed by AWS 
+- It includes 
+    - Postgres 
+    - MySql 
+    - MariaDB 
+    - Oracle
+    - Microsoft SQL Server 
+    - Aurora - AWS Proprietary database 
+
+- RDS is a managed Service 
+
+    - Automated Provisioning, OS Patching 
+    - Continuous backups and restore to specific timestamp 
+    - Monitoring Dashboards 
+    - Read Replicas for improved read Performance 
+    - Multi-AZ setup for DR 
+    - Maintenance Window for Upgrades 
+    - Scaling Capability 
+    - Storage backed by EBS - gp2 or iol 
+
+But you can't SSH into your instances
+
+- Helps you increase storage on your RDS DB instance dynamically 
+- When RDS detects you are running out of free database storage, it scales automatically 
+- Avoid manually scaling your database storage 
+- You have to set Maximum Storage Threshold (Maximum Limit for DB Storage)
+- Automatically modify storage if: 
+    - Free storage is less than 10% of allocated storage 
+    - Low-Storage lasts at least 5 minutes 
+    - 6 hours have passed since last modification 
+- Useful for applications with unpredictable workloads 
+- Supports all RDS database Engines ( Maria DB, MySQL, PostgresSQL, SQLServer and Oracle)
+
+RDS Read Replicas 
+
+- 
