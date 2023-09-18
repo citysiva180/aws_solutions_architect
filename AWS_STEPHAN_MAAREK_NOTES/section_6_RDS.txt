@@ -46,4 +46,44 @@ But you can't SSH into your instances
 
 RDS Read Replicas 
 
-- 
+- Understand the difference between read replicas and Multi-zone AZ 
+- Read replicas helps you to scale your reads. Meaning these replicas are optimized for reading which is much 
+faster in read speed 
+- You could create up to 15 read replicas 
+- Within AZ, cross AZ or Cross Region 
+- Replication is ASYNC so reads are eventually consistent 
+- Replicas can be promoted to their on DB 
+- Applications must update the connection string to leverage read replicas 
+
+Example use case : 
+
+- You have a production database which takes a normal load 
+- you want to run a reporting application to run some analytics 
+- You create a Read replica to run the new workload there 
+- The production application is unaffected 
+- Read Replicas are used for SELECT (=read) only kind of statements 
+(not INSERT, UPDATE, DELETE)
+
+Network Cost associated with RDS Read Replicas 
+
+- In AWS there's a network cost when data goes from one AZ to another 
+- for RDS Read Replicas within the same region you don't pay that fee
+
+    Same region but different availability zones - free 
+    Different region and Different availability zones - Cost 
+
+RDS Multi-AZ Disaster Recovery 
+
+- SYNC Replication 
+- One DNS name - automatic app failover to standby 
+- Increase Availability 
+- Failover in case of loss of AZ, loss of network, instance 
+or storage failure 
+- No Manual Intervention in apps 
+- Not used for scaling 
+
+RDS - From Single-AZ to Multi-AZ 
+
+- Zero Downtime operation - no need to stop the DB 
+- Just click on modify for the database 
+- The following 
