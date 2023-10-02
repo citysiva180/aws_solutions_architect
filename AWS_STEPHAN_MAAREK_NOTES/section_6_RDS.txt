@@ -114,3 +114,79 @@ MySQL nd RDS over 3x the performance of Postgres on RDS
 - Aurora can have up to 15 replicas and the replication process is faster than MySQL (sub 10 ms replica )
 - Failure in Aurora is instantaneous. It's HA native 
 - Aurora costs more than RDS - 20% more but its more efficient 
+
+Aurora High Availability and Read Scaling 
+
+- 6 copies of your data across AZ 
+    - 4 copies out of 6 needed for writes 
+    - 3 copies out of 6 needed for reads 
+    - self-healing with peer-to-peer replication 
+    - storage is striped across 100s of volumes 
+
+- One Aurora Instances takes writes 
+- Automated failover for master in less than 30 seconds 
+- Master + up to 15 aurora read replicas serve reads 
+- Support for cross region replication 
+
+Features of Aurora 
+
+- Automatic fail-over 
+- Backup and Recovery 
+- Isolation and Security 
+- Industry compliance 
+- Push-button scaling 
+- Automated Patching with Zero Downtime 
+- Advanced Monitoring 
+- Routing Maintenance 
+- Backtrack: restore data at any point of time without using backups 
+
+Features of Aurora in Detail 
+
+- Aurora Custom Endpoints 
+
+    - Read and Write replicas have their own functionality to increase performance 
+    - there are multiple read replicas with a load balancer which reduces your latency in reading from Aurora database. 
+    - With this you also could have a custom endpoint to your database. 
+    - Using the Custom Endpoints you could run your analytical queries on your database 
+    - Define a subset of Aurora Instances as a Custom Endpoints 
+    - Example : Run analytical queries on specific endpoints 
+    - The Reader Endpoints is generally not used after defining Custom Endpoints 
+
+- Aurora Serverless 
+
+    - Automated database instantiation and Autoscaling based on Actual Usage 
+    - Good for infrequent intermittent or unpredictable workloads 
+    - No capacity planning 
+    - Pay per second can be more cost-effective 
+
+- Aurora Multi-Master 
+
+    - In case you want continuous write availability for the writer nodes 
+    - Every node does R/W - vs promoting a Read Replicas as the new Master 
+
+Global Aurora 
+
+- Aurora Cross Region Read Replicas 
+
+    - Useful for disaster recovery 
+    - Simple to Put in Place 
+
+- Aurora Global Database 
+
+    - 1 Primary Region (read/write)
+    - Up to 5 secondary (read-only) regions, replication lag is less than 1 second 
+    - Up to 16 Read Replicas per secondary region 
+    - Helps fro decreasing Latency 
+    - promoting another region has an RTO of < 1 minutes
+    - Typical Cross-Region replication takes less than 1 second 
+
+- Aurora Machine Learning Instances 
+
+    - Enable you to add ML-based Predictions to your applications via sql 
+    - Simple, optimized and secure integration between Aurora and AWS ML Services 
+    - Supported Services 
+        - Amazon Sage Maker - use with any ML Model 
+        - Amazon Comprehend 
+    - You don't need to have ML Experience 
+    - Use case: fraud detection, ads targeting, sentiment analysis, product recommendations 
+
