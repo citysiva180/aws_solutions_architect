@@ -87,3 +87,30 @@ RDS - From Single-AZ to Multi-AZ
 - Zero Downtime operation - no need to stop the DB 
 - Just click on modify for the database 
 - The following 
+
+RDS Custom Options 
+
+- Managed Oracle and MS SQL Server Database with OS and Database Customization 
+- RDS: Automates setup, operation and scaling of database in AWS 
+- Custom :  access to the underlying database and OS so you can 
+    - configure settings
+    - Install patches 
+    - Enable native features 
+    - Access the underlying Ec2 Instance using SSH or SSM Session Manager 
+- De-activate the automation mode to perform your customization, better to take a DB 
+snapshot before as well. 
+
+RDS vs RDS Custom 
+    - RDS - Entire Database is managed by AWS 
+    - RDS Custom :  full admin access to the underlying OS and the Database 
+
+Amazon Aurora 
+
+- Aurora is a proprietary technology from AWS - not open sourced 
+- Postgres and MySQL are both supported as Aurora DB 
+- Aurora is "AWS cloud Optimized and claims 5x performance improvement over 
+MySQL nd RDS over 3x the performance of Postgres on RDS 
+- Aurora storage automatically fro in increments of 10GB up to 128 TB 
+- Aurora can have up to 15 replicas and the replication process is faster than MySQL (sub 10 ms replica )
+- Failure in Aurora is instantaneous. It's HA native 
+- Aurora costs more than RDS - 20% more but its more efficient 
