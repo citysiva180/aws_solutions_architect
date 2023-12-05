@@ -44,7 +44,10 @@ But you can't SSH into your instances
 - Useful for applications with unpredictable workloads 
 - Supports all RDS database Engines ( Maria DB, MySQL, PostgresSQL, SQLServer and Oracle)
 
-RDS Read Replicas 
+RDS Read Replicas
+
+Read Replicas improves and scales the reading capabilities of the database 
+Remember : Read Replicas have Async Replication by which they are always ib synch!
 
 - Understand the difference between read replicas and Multi-zone AZ 
 - Read replicas helps you to scale your reads. Meaning these replicas are optimized for reading which is much 
