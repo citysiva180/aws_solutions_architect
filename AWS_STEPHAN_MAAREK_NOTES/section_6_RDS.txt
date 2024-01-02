@@ -46,12 +46,17 @@ But you can't SSH into your instances
 
 RDS Read Replicas
 
+Read Replicas for Read Scalability: 
+
+
+
 Read Replicas improves and scales the reading capabilities of the database 
 Remember : Read Replicas have Async Replication by which they are always ib synch!
 
 - Understand the difference between read replicas and Multi-zone AZ 
 - Read replicas helps you to scale your reads. Meaning these replicas are optimized for reading which is much 
 faster in read speed 
+
 - You could create up to 15 read replicas 
 - Within AZ, cross AZ or Cross Region 
 - Replication is ASYNC so reads are eventually consistent 
@@ -115,8 +120,10 @@ Amazon Aurora
 MySQL nd RDS over 3x the performance of Postgres on RDS 
 - Aurora storage automatically fro in increments of 10GB up to 128 TB 
 - Aurora can have up to 15 replicas and the replication process is faster than MySQL (sub 10 ms replica )
-- Failure in Aurora is instantaneous. It's HA native 
+- Failure in Aurora is instantaneous. It's HA native | This basically means, your database is restored instantaneously!
 - Aurora costs more than RDS - 20% more but its more efficient 
+
+Remember : Aurora has api endpoints for reading and writing. Reading endpoints connect to all read replicas 
 
 Aurora High Availability and Read Scaling 
 
@@ -193,3 +200,136 @@ Global Aurora
     - You don't need to have ML Experience 
     - Use case: fraud detection, ads targeting, sentiment analysis, product recommendations 
 
+- RDS Backups 
+
+    - Automated Backups 
+        - Daily full backup of the database 
+        - Transaction logs are backed-up by RDS every 5 minutes 
+        - => Ability to restore to ay point in time 
+        - 1 to 35 days of retention, set 0 to disable automated backups 
+
+
+    - Manual DB Snapshots 
+        - Manually triggered by the user 
+        - Retention of Backup for as long as you want 
+
+    - Trick in a stopped RDS Database, you will still pay for the storage. If you plan on stopping it 
+    for a long time, you should snapshot and restore instead
+
+- Aurora Backups 
+
+    - 1 to 35 days - cannot be disabled 
+    - Point in time recovery in that time frame 
+
+- Manual DB Snapshots 
+    - Manual triggered by the user 
+    - Retention of backup for as long as you want 
+
+- RDS and Aurora Restore Options 
+
+    - Restoring a RDS / Aurora backup or a snapshot creates a new database 
+
+- Restoring MySQL RDS Database from S3 
+
+    - Create a backup of your on-premises database 
+    - Store it on backup file onto a new RDS instance running MySQL 
+
+- Restoring MySQL Aurora Cluster From s3 
+
+    - Create a backup of your on-premises database using Percona XtraBackup 
+    - Store the backup file on Amazon S3 
+    - Restore the backup file onto a new Aurora Cluster running MySQL 
+
+Aurora Database Cloning 
+
+    - Create a new Aurora DB Cluster from an Existing one 
+    - Faster than Snapshot and Restore 
+    - Uses copy-on-write protocol 
+        - Initially, the new DB Cluster uses the same data volume as the original 
+        - When updates are made to the new DB cluster data, then additional storage is allocated and the data 
+        is copied to be separated 
+
+    - Very fast and Cost-Effective 
+    - Useful to create a "staging" database from a "production" database without 
+    impacting the production database 
+
+RDS and Aurora Security 
+
+- At rest encryption 
+
+    - Database master and replicas encryption using AWS KMS - Must be defined as launch time 
+    - If the master is not encrypted, the read replicas cannot be encrypted 
+    - To encrypt an un-encrypted database, go through a DB Snapshot and Restore as encrypted 
+
+Amazon RDS proxy 
+
+- Fully managed database proxy for RDS 
+- Allows apps to pool and share DB Connections established with the database 
+- Improving database efficiency by reducing the stress on database resources and minimize open connections 
+- Serverless, autoscaling, highly available - Multi-AZ 
+- Reduced RDS and Aurora Failover time by up 66%
+- Supports RDS 
+- No code changes required for most apps 
+- Enforce IAM authentication for DB and securely store credentials in AWS Secrets manager. 
+- RDS Proxy is never publicly accessible - must be access via VPC 
+
+AWS Elastic Cache Overview 
+
+- The same way RDS is to get managed Relational Databases... 
+- ElastiCache is to get managed Redis or Memcached 
+- Caches are in-memory databases with really high performance, low latency 
+- Helps reduce load off of databases for read intensive workloads 
+- Helps make your application stateless 
+- AWS takes care of OS Maintenance / patching, optimization, setup, 
+configuration, monitoring, failure recovery and backups 
+- Using Elastic cache Involves in heavy application code change  
+
+ElastiCache Solution Architecture - User Session Store 
+
+- User logs into any of the application 
+- The Application writes the session data into ElastiCache 
+- The User hits another instance of our application 
+- The instance retrieves the data and the user is already logged in 
+
+ElastiCache  - Redis vs Memcached 
+
+Redis 
+
+- Multi-AZ with Auto-Failover 
+- Read Replicas to Scale reads and have high availability 
+- Data durability using AOF persistance 
+- Backup and Restore features 
+- Supports sets and sorted set sorts 
+
+Memcached 
+
+- Multi-node for partitioning of data
+- No high availability - replication 
+- Non Persistent 
+- No backup and restore 
+- Multi-threaded architecture 
+
+ElastiCache - Cache Security 
+
+- ElasticCache supports IAM Authentication for Redis 
+- IAM Policies on ElastiCache are only used for AWS API-Level security 
+- Redis AUTH 
+
+    - You can set a "password/token" when you create a Redis Cluster 
+    - This is an Extra level of security for your cache - on the top of security groups 
+    - Support SSL in flight encryption 
+
+- Memcached 
+    - Supports SASL-Based Authentication - advanced 
+
+Patterns for ElastiCache 
+
+- Lazy Loading: All the read data is Cached, data can become stale in cache 
+- Write through: Adds or Update data in the cache when written to a DB 
+- Session Store: Store temporary session data in a cache 
+
+ElastiCache - Redis Use Case: 
+
+- Gaming leader boards are computationally complex 
+- Redis Sorted Sets guarantee both uniqueness and element ordering 
+- Each time a new element is added, its ranked real time and then added in correct order.. 
